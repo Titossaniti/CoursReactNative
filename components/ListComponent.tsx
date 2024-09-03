@@ -10,15 +10,14 @@ export default function ListComponent() {
     const [name, setNewName] = useState("");
 
     function addToList() {
-        if (name === "") {
+        if (name.trim().length === 0) {
             Alert.alert(
-                "Erreur", // Titre de l'alerte
-                "Le champs ne peut pas etre vide",  // Message de l'alerte
-                [{ text: "OK" }] // Bouton "OK"
+                "Erreur",
+                "Le champs ne peut pas etre vide",
+                [{ text: "OK" }]
             );
             return;
         }
-
         setList([...list, name]);
         setNewName("");
     }
@@ -29,7 +28,7 @@ export default function ListComponent() {
                         onChange={(event) => setNewName(event.nativeEvent.text)}
                         value={name}/>
 
-            <Button onPress={() => addToList()} title="Ajouter"/>
+            <Button onPress={addToList} title="Ajouter"/>
             {list.map((item, index) => <Text key={index}>{item}</Text>)}
         </View>
     )
