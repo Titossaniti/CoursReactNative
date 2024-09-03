@@ -6,9 +6,10 @@ export default function Counter() {
 
     return (
         <View>
-            <Button onPress={() => {setCount(count + 1)}} title="Clique Moi"/>
-            <Button onPress={() => {setCount(0)}} title="Reset"/>
-            <Text>J'ai été cliqué {count} fois !</Text>
+            <Button onPress={() => setCount(count +1)} title="+"/>
+            <Button onPress={() => setCount(0)} title="Reset"/>
+            <Button onPress={() => setCount(count - 1)} title="-"/>
+            <Text>Le compteur est à : {count}</Text>
         </View>
     );
 };
