@@ -5,7 +5,7 @@ import {Link} from "@react-navigation/native";
 export default function list() {
     return(
         <View>
-            <Link to="/">Retour accueil</Link>
+            <Link style={{marginTop : 30}} to="/">Retour accueil</Link>
             <ListComponent/>
         </View>
     )

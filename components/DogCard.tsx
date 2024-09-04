@@ -1,11 +1,24 @@
-import { View, Text, StyleSheet } from "react-native";
+import {View, Text, StyleSheet, Button, Alert} from "react-native";
 import { Dog } from "@/entities";
+import axios from "axios";
 
 interface Props {
     dog: Dog;
 }
 
 export default function DogCard({ dog }: Props) {
+
+    function deleteDog(id: string | undefined) {
+        axios.delete('/api/dog/'+id)
+            .then(() => {
+                Alert.alert("Succès !", "Le chien a bien été supprimé.",[{ text: "OK" }]);
+            })
+            .catch(error => {
+                Alert.alert("Erreur", "Erreur lors de la suppression du chien.",[{ text: "OK" }]);
+                console.error('Erreur lors de la suppression du chien :', error);
+            });
+    }
+
     return (
         <View style={styles.cardContainer}>
             <Text style={styles.dogName}>{dog.name}</Text>
@@ -17,6 +30,7 @@ export default function DogCard({ dog }: Props) {
                     day: 'numeric',
                 })}
             </Text>
+            <Button onPress={() => deleteDog(dog.id)} title='Supprimer'/>
         </View>
     );
 }
