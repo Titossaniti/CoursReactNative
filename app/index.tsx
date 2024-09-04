@@ -15,6 +15,7 @@ const [name, setName] = useState('Jean');
             <Link to="/dog">Accéder à la liste de chiens</Link>
             <Link to="/posts">Accéder à la liste de posts</Link>
             <Link to="/sensor">Accéder au sensor tool</Link>
+            <Link to="/carto">Accéder à la map</Link>
             <Text onPress={() => setName('Thierry')}>Hello, {name}</Text>
 
             <MonComponent/>
